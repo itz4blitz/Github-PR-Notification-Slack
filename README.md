@@ -1,11 +1,15 @@
-
 # GitHub PR Notification Bot
 
-This repository contains a GitHub PR Notification Bot that fetches open pull requests from a designated GitHub repository and sends Slack notifications with the PR details. The bot is designed to run in a Docker container.
+This repository contains a GitHub PR Notification Bot that fetches open pull requests from GitHub and sends Slack notifications with the PR details. The bot is designed to run in a Docker container.
 
 ## Prerequisites
 
 - **Docker**: Ensure that Docker is installed on your system. You can download and install Docker from the official Docker website.
+- **Slack**: Create a Slack incoming webhook:
+    1. Go to your Slack workspace settings.
+    2. Navigate to `Manage apps` > `Custom Integrations` > `Incoming WebHooks`.
+    3. Choose the channel where you want the notifications to be sent and then click on `Add Incoming WebHooks Integration`.
+    4. Copy the Webhook URL. You'll use this in the `.env` configuration.
 
 ## Getting Started
 
@@ -26,21 +30,12 @@ This repository contains a GitHub PR Notification Bot that fetches open pull req
 
 4. Open the `./src/.env` file in a text editor and provide your GitHub and Slack configuration details.
 
-5. Configure User Mapping: Navigate to `./src/usernameMapping.json` and update the file with the desired mapping between GitHub usernames and Slack usernames. This mapping ensures accurate notifications, translating GitHub usernames to Slack display names. The structure should look like:
-   ```json
-   {
-       "githubUsername1": "SlackName1",
-       "githubUsername2": "SlackName2",
-       ...
-   }
-   ```
-
 ## Configuration
 
 Provide appropriate values for the following environment variables:
 
 ```
-GITHUB_REPO=RepoUser/Name-To-Repo-To-Monitor
+GITHUB_REPO=RepoUser\Name-To-Repo-To-Monitor
 GITHUB_TOKEN=abc_123
 SLACK_WEBHOOK_URL=https://hooks.slack.com/myWebhook
 DEBUG_MODE=false
@@ -48,7 +43,7 @@ CRON_INTERVAL=2
 CRON_TIME=8
 ```
 
-**Note**: Adjust `CRON_INTERVAL` and `CRON_TIME` to change the bot's notification schedule. Ensure to consider the timezone settings of your hosting environment when setting these values.
+**Note**: Adjust `CRON_INTERVAL` and `CRON_TIME` to change the bot's notification schedule. Ensure to consider the timezone settings of your hosting environment.
 
 ## Building the Docker Image
 
@@ -88,5 +83,3 @@ You can view logs of the running container by executing:
 ```bash
 docker logs <container-id>
 ```
-
-Ensure to monitor logs regularly to address any issues or misconfigurations that may arise.
