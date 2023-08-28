@@ -1,4 +1,5 @@
 # GitHub PR Notification Bot
+The GitHub PR Notification Bot is an automated tool designed to streamline the process of monitoring open pull requests on GitHub repositories and sending notifications to a designated Slack channel. Built within a Docker container, this bot offers flexible configuration options, making it suitable for teams of varying sizes and requirements. It supports username mapping to Slack names and allows scheduling notifications based on different time zones. This bot is perfect for developers and teams who aim to improve visibility and management of pull requests, thus enhancing collaboration and speeding up the code review process.
 
 ## Prerequisites
 
