@@ -10,4 +10,3 @@ export function sendSlackNotification(prs: PullRequest[], usernameMapping: Recor
         mrkdwn: true
     });
 }
-

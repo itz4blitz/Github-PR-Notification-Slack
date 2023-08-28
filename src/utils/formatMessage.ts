@@ -4,7 +4,7 @@ import { PullRequest } from '../api/github';
 export function formatMessage(prs: PullRequest[], usernameMapping: Record<string, string>): string {
     const MAX_TITLE_LENGTH = 50;
 
-    let slackMessage = ':robot: *SnapNurse Automation QA Pull Requests*\n\n';
+    let slackMessage = ':information_source: *SnapNurse Automation QA Pull Requests*\n\n';
 
     if (prs.length > 0) {
         slackMessage += `:warning: There are ${prs.length} open PRs that need review:\n\n`;
@@ -17,7 +17,7 @@ export function formatMessage(prs: PullRequest[], usernameMapping: Record<string
 
             const truncatedTitle = pr.title.length > MAX_TITLE_LENGTH ? pr.title.slice(0, MAX_TITLE_LENGTH - 3) + '...' : pr.title;
 
-            slackMessage += `- "${truncatedTitle}" created by *${usernameMapping[pr.user.login] || pr.user.login}* (${daysOld}). [Link to PR](${pr.html_url}). Reviewers: ${reviewers}\n`;
+            slackMessage += `- "${truncatedTitle}" created by *${usernameMapping[pr.user.login] || pr.user.login}* (${daysOld}). <${pr.html_url}|Link to PR>. Reviewers: ${reviewers}\n`;
         });
     } else {
         slackMessage += ":tada: Great job, team! There are no outstanding PRs at the moment.";

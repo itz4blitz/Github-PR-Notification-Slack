@@ -6,23 +6,22 @@ import Holidays from 'date-holidays';
 export function scheduleTask(
     cronTime: string,
     timeZone: string,
-    coworkerTimeZone: string,
-    usHolidays: Holidays,
-    ukraineHolidays: Holidays,
+    name: string,
+    holidays: Holidays,
     task: () => Promise<void>
 ) {
-    const cronExpression = `0 ${cronTime} * * 1-5`; // Run M-F at the specified time
-
-    cron.schedule(cronExpression, async () => {
-        const now = moment().tz(coworkerTimeZone);
-        const isUsHoliday = usHolidays.isHoliday(now.toDate());
-        const isUkraineHoliday = ukraineHolidays.isHoliday(now.toDate());
-
-        if (!isUsHoliday && !isUkraineHoliday) {
-            console.log('Running task...');
+    cron.schedule(cronTime, async () => {
+        const now = moment().tz(timeZone);
+        const isHoliday = holidays.isHoliday(now.toDate());
+        if (!isHoliday) {
+            console.log(`Running ${name} task...`);
             await task();
         } else {
-            console.log('Skipping task due to holiday.');
+            console.log(`Skipping ${name} task due to holiday.`);
         }
+    }, {
+        scheduled: true,
+        timezone: timeZone
     });
 }
+

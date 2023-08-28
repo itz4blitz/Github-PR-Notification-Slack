@@ -29,7 +29,7 @@ async function checkPRsAndNotify() {
         if (process.env.DEBUG_MODE === 'true') {
             // Print the debug messages to console
             console.log('Reminder: There are outstanding PR\'s. Please review the PR. If additional changes are needed, leave a request inside of the PR and move the corresponding JIRA ticket to \'To Do\'. If the PR is complete, please merge into `master`.\n');
-            
+
             prData.forEach((pr, index) => {
                 const createdDate = moment(pr.created_at).fromNow();
                 const author = `Author: @${usernameMapping[pr.user.login]}`;
@@ -52,8 +52,8 @@ async function checkPRsAndNotify() {
     }
 }
 
-const ukrTimeZone = 'Europe/Kiev'; 
-const usTimeZone = 'America/New_York'; 
+const ukrTimeZone = 'Europe/Kiev';
+const usTimeZone = 'America/New_York';
 
 // Calculate next update times for UKR and US teams
 const nextUpdateTimeUkr = moment().tz(ukrTimeZone).hours(10).minutes(0).seconds(0).format('YYYY-MM-DD HH:mm:ss');
@@ -74,5 +74,10 @@ if (process.env.DEBUG_MODE === 'true') {
     checkPRsAndNotify();
 } else {
     // Otherwise, schedule the task using the utility function
-    scheduleTask('0', usTimeZone, ukrTimeZone, usHolidays, ukraineHolidays, checkPRsAndNotify);
+    // Schedule the task for the US team at 8 AM NY time
+    scheduleTask('0 8 * * 1-5', 'America/New_York', 'US Team', usHolidays, checkPRsAndNotify);
+
+    // Schedule the task for the Ukraine team at 10 AM Kiev time
+    scheduleTask('0 10 * * 1-5', 'Europe/Kiev', 'Ukraine Team', ukraineHolidays, checkPRsAndNotify);
+
 }
