@@ -1,5 +1,5 @@
-# GitHub PR Notification Bot
-The GitHub PR Notification Bot is an automated tool designed to streamline the process of monitoring open pull requests on GitHub repositories and sending notifications to a designated Slack channel. Built within a Docker container, this bot offers flexible configuration options, making it suitable for teams of varying sizes and requirements. It supports username mapping to Slack names and allows scheduling notifications based on different time zones. This bot is perfect for developers and teams who aim to improve visibility and management of pull requests, thus enhancing collaboration and speeding up the code review process.
+# PulsePR
+PulsePR is an automated tool designed to streamline the process of monitoring open pull requests on GitHub repositories and sending notifications to a designated Slack channel. Built within a Docker container, this bot offers flexible configuration options, making it suitable for teams of varying sizes and requirements. It supports username mapping to Slack names and allows scheduling notifications based on different time zones. This bot is perfect for developers and teams who aim to improve visibility and management of pull requests, thus enhancing collaboration and speeding up the code review process.
 
 ## Prerequisites
 
@@ -11,13 +11,13 @@ The GitHub PR Notification Bot is an automated tool designed to streamline the p
 1. Clone this repository:
 
 ```bash
-git clone https://github.com/your-username/github-pr-notification-bot.git
+git clone https://github.com/your-username/PulsePR.git
 ```
    
 2. Navigate to the project directory:
 
 ```bash
-cd github-pr-notification-bot
+cd PulsePR
 ```
    
 3. Copy the example environment file:
@@ -59,7 +59,7 @@ The default timezone for the Docker container is set to UTC.
 Build the Docker image:
 
 ```bash
-docker build -t github-pr-notification-bot .
+docker build -t PulsePR .
 ```
    
 ## Running the Bot
@@ -67,7 +67,7 @@ docker build -t github-pr-notification-bot .
 You can run the bot as follows:
 
 ```bash
-docker run --rm -d github-pr-notification-bot
+docker run --rm -d PulsePR
 ```
 
 ## Testing
@@ -75,7 +75,7 @@ docker run --rm -d github-pr-notification-bot
 To test the bot locally:
 
 ```bash
-docker run --rm -it github-pr-notification-bot
+docker run --rm -it PulsePR
 ```
 
 ## Deployment
@@ -83,7 +83,7 @@ docker run --rm -it github-pr-notification-bot
 For production:
 
  ```bash
-docker run --rm -d github-pr-notification-bot
+docker run --rm -d PulsePR
 ```
 
 ## Monitoring and Logging
