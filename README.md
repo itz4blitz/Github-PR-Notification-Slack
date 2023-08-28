@@ -23,9 +23,10 @@ cd github-pr-notification-bot
 
 ```bash
 cp ./src/.env.example ./src/.env
+cp ./src/usernameMapping.json.example ./src/usernameMapping.json
 ```
 
-4. Open the `./src/.env` file in a text editor and provide your GitHub and Slack configuration details.
+4. Open the `./src/.env` and `./src/usernameMapping.json` file in a text editor and provide your GitHub and Slack configuration details. 
 
 ### Configuration
 
