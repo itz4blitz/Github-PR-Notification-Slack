@@ -59,7 +59,7 @@ The default timezone for the Docker container is set to UTC.
 Build the Docker image:
 
 ```bash
-docker build -t PulsePR .
+docker build -t pulsepr .
 ```
    
 ## Running the Bot
@@ -67,7 +67,7 @@ docker build -t PulsePR .
 You can run the bot as follows:
 
 ```bash
-docker run --rm -d PulsePR
+docker run --rm -d pulsepr
 ```
 
 ## Testing
@@ -75,7 +75,7 @@ docker run --rm -d PulsePR
 To test the bot locally:
 
 ```bash
-docker run --rm -it PulsePR
+docker run --rm -it pulsepr
 ```
 
 ## Deployment
@@ -83,7 +83,7 @@ docker run --rm -it PulsePR
 For production:
 
  ```bash
-docker run --rm -d PulsePR
+docker run --rm -d pulsepr
 ```
 
 ## Monitoring and Logging
